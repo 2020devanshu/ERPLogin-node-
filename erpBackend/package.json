@@ -13,12 +13,14 @@
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "fast2sms": "^1.0.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.10",
     "nodemailer": "^6.4.17",
     "nodemailer-sendgrid-transport": "^0.2.0",
     "nodemon": "^2.0.6",
     "sib-api-v3-sdk": "^8.0.2",
+    "unirest": "^0.6.0",
     "validator": "^13.1.17"
   }
 }

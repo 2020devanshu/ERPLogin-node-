@@ -23,13 +23,6 @@ const sendEmail = async (option) => {
     .catch((err) => {
       console.log(err);
     });
-
-  //   try {
-  //     const res = await client.sendMail(mailOptions);
-  //     console.log(res);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
 };
 
 module.exports = sendEmail;
