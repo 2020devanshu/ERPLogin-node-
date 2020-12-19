@@ -17,6 +17,12 @@ const studentSchema = new mongoose.Schema({
     unique: true,
     validate: [validator.isEmail, "Please enter a valid email"],
   },
+  grade: {
+    type: mongoose.Schema.ObjectId,
+    ref: "Grade",
+    required: [true, "Must specify grade"],
+  },
+
   phoneNumber: {
     type: String,
     trim: true,
