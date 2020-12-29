@@ -126,7 +126,7 @@ exports.resendOtp = async (req, res, next) => {
         },
       });
     } else {
-      console.log(user);
+      // console.log(user);
 
       const otp = createOtp();
       const updatedUser = await Admin.findByIdAndUpdate(
@@ -140,7 +140,7 @@ exports.resendOtp = async (req, res, next) => {
           runValidators: true,
         }
       );
-      console.log(updatedUser);
+      // console.log(updatedUser);
 
       sendMail({
         email: updatedUser.email,
