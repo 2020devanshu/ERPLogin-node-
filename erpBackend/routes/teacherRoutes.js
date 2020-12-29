@@ -1,44 +1,42 @@
 const express = require("express");
 
 const {
-  login,
-  createUser,
-  forgotPassword,
-  resetPassword,
-  updatePassword,
-  authenticate,
-} = require("../controllers/authControllers/auth");
-const Teacher = require("../models/teacherModel");
-const Student = require("../models/studentModel");
-const Admin = require("../models/adminModel");
+  teacherAuthenticate,
+  teacherForgotPassword,
+  teacherLogin,
+  teacherResetPassword,
+  teacherUpdatePassword,
+  createTeacher,
+} = require("../controllers/teacherController");
+const { createStudent } = require("../controllers/studentController");
+const { restrictTo } = require("../controllers/authControllers/auth");
 const router = express.Router();
 
-router.post("/login", login(Teacher));
+router.post("/login", teacherLogin);
 // router.post("/signup", authenticate(Admin), signup(Teacher));
 
 router.post(
   "/createTeacher",
-  authenticate(Teacher),
-  (req, res, next) => {
-    req.body.role = "teacher";
-    next();
-  },
-  createUser(Teacher)
+  teacherAuthenticate,
+  restrictTo("sub-admin"),
+  // (req, res, next) => {
+  //   req.body.role = "teacher";
+  //   next();
+  // },
+  createTeacher
 );
-router.post("/createStudent", authenticate(Teacher), createUser(Student));
+router.post("/createStudent", teacherAuthenticate, createStudent);
 router.post(
   "/forgotPassword",
-  authenticate(Admin),
-  forgotPassword(Teacher, "teachers")
+  teacherAuthenticate,
+  restrictTo("sub-admin"),
+  teacherForgotPassword
 );
 router.patch(
   "/resetPassword/:token",
-  authenticate(Admin),
-  resetPassword(Teacher)
+  teacherAuthenticate,
+  restrictTo("sub-admin"),
+  teacherResetPassword
 );
-router.patch(
-  "/updatePassword/",
-  authenticate(Teacher),
-  updatePassword(Teacher)
-);
+router.patch("/updatePassword/", teacherAuthenticate, teacherUpdatePassword);
 module.exports = router;

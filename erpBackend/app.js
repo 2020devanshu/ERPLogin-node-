@@ -5,14 +5,14 @@ const teacherRouter = require("./routes/teacherRoutes");
 const adminRouter = require("./routes/adminRoutes");
 const { signToken } = require("./helpers/getJwtToken");
 require("./helpers/passport/passport-google");
-const { checkLogin } = require("./controllers/authControllers/auth");
+const { adminCheckLogin } = require("./controllers/adminController");
 const app = express();
 app.use(express.json());
 app.use(passport.initialize());
 
 app.get(
   "/auth/google",
-  checkLogin,
+  adminCheckLogin,
   passport.authenticate("google", {
     session: false,
     scope: ["openid", "profile", "email"],
@@ -20,7 +20,7 @@ app.get(
 );
 app.get(
   "/auth/google/callback",
-  //   authenticate(Admin),
+  adminCheckLogin,
   passport.authenticate("google", { session: false }),
   (req, res) => {
     try {
