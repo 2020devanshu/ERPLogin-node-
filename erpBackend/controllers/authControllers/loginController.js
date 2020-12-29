@@ -21,6 +21,13 @@ exports.login = (Model) => {
         });
       }
 
+      if (user.isConfirmed === false) {
+        return res.status(401).json({
+          status: "failed",
+          error: "You are not confirmed . Please confirm yourself",
+        });
+      }
+
       const token = signToken(user._id);
 
       user.password = undefined;

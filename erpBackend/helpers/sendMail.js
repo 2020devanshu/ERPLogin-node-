@@ -18,6 +18,7 @@ const sendEmail = async (option) => {
   client
     .sendMail(mailOptions)
     .then((res) => {
+      console.log("sent");
       console.log(res);
     })
     .catch((err) => {

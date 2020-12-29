@@ -1,6 +1,11 @@
 exports.login = require("./loginController").login;
-exports.signup = require("./signupController").signup;
+exports.createUser = require("./signupController").createUser;
+exports.adminSignup = require("./signupController").adminSignup;
+exports.resendOtp = require("./signupController").resendOtp;
+exports.confirmSignup = require("./signupController").confirmSignup;
 exports.forgotPassword = require("./forgotPasswordController").forgotPassword;
 exports.resetPassword = require("./resetPassword").resetPassword;
 exports.updatePassword = require("./updatePassword").updatePassword;
 exports.authenticate = require("./authenticate").authenticate;
+exports.checkLogin = require("./authenticate").checkLogin;
+exports.restrictTo = require("./authenticate").restrictTo;

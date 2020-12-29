@@ -7,6 +7,13 @@ const teacherSchema = new mongoose.Schema({
     type: String,
     required: [true, "name is required"],
   },
+  role: {
+    type: String,
+    enum: {
+      values: ["teacher", "sub-admin"],
+    },
+    default: "teacher",
+  },
   email: {
     type: String,
     required: [true, "User must specify email"],
@@ -30,7 +37,11 @@ const teacherSchema = new mongoose.Schema({
     type: String,
     required: [true, "User must specify phone number"],
   },
-
+  attendanceType: {
+    type: String,
+    enum: ["day-wise", "lecture-wise"],
+    required: [true, "Must specify attendanceType"],
+  },
   active: {
     type: Boolean,
     default: true,

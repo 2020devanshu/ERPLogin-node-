@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
-const gradeSchema = new mongoose.Schema({
-  gradeName: {
+const branchSchema = new mongoose.Schema({
+  branchName: {
     type: String,
     required: true,
     trim: true,
@@ -17,6 +17,6 @@ const gradeSchema = new mongoose.Schema({
   createdOn: Date,
 });
 
-const Grade = mongoose.model("Grade", gradeSchema);
+const Branch = mongoose.model("Branch", branchSchema);
 
-module.exports = Grade;
+module.exports = Branch;

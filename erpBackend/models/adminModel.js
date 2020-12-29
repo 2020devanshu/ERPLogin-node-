@@ -51,6 +51,19 @@ const adminSchema = new mongoose.Schema({
   photo: {
     type: String,
   },
+  isConfirmed: {
+    type: Boolean,
+    default: false,
+  },
+  signupOtp: {
+    type: Number,
+    select: false,
+  },
+  otpExpiresIn: Date,
+  provider: String,
+  uid: {
+    type: String,
+  },
 
   createdOn: Date,
   passwordChangedAt: Date,

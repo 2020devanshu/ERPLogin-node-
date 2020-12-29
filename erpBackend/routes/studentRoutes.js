@@ -2,7 +2,6 @@ const express = require("express");
 
 const {
   login,
-  signup,
   forgotPassword,
   resetPassword,
   updatePassword,
@@ -13,7 +12,7 @@ const Admin = require("../models/adminModel");
 const router = express.Router();
 
 router.post("/login", login(Student));
-router.post("/signup", authenticate(Admin), signup(Student));
+// router.post("/signup", authenticate(Admin), signup(Student));
 router.post(
   "/forgotPassword",
   authenticate(Admin),

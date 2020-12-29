@@ -17,12 +17,21 @@ const studentSchema = new mongoose.Schema({
     unique: true,
     validate: [validator.isEmail, "Please enter a valid email"],
   },
-  grade: {
+  branch: {
     type: mongoose.Schema.ObjectId,
-    ref: "Grade",
-    required: [true, "Must specify grade"],
+    ref: "Branch",
+    required: [true, "Must specify Branch"],
   },
-
+  section: {
+    type: mongoose.Schema.ObjectId,
+    ref: "Section",
+    required: [true, "Must specify section"],
+  },
+  studentType: {
+    type: String,
+    enum: ["Hosteler", "Day-Scholar"],
+    required: [true, "Must specify type"],
+  },
   phoneNumber: {
     type: String,
     trim: true,
@@ -59,6 +68,12 @@ const studentSchema = new mongoose.Schema({
   passwordChangedAt: Date,
   passwordResetToken: String,
   passwordResetExpires: Date,
+  institutionAttendance: {
+    type: Number,
+  },
+  hostelAttendance: {
+    type: Number,
+  },
 });
 
 studentSchema.pre("save", async function (next) {
