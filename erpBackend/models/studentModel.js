@@ -68,10 +68,10 @@ const studentSchema = new mongoose.Schema({
   passwordChangedAt: Date,
   passwordResetToken: String,
   passwordResetExpires: Date,
-  institutionAttendance: {
+  institutionAttendancePercentage: {
     type: Number,
   },
-  hostelAttendance: {
+  hostelAttendancePercentage: {
     type: Number,
   },
 });

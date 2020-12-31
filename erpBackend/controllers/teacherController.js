@@ -17,6 +17,6 @@ exports.createTeacher = createUser(Teacher);
 exports.teacherLogin = login(Teacher);
 exports.teacherForgotPassword = forgotPassword(Teacher, "teachers");
 exports.teacherResetPassword = resetPassword(Teacher);
-exports.teacherAuthenticate = authenticate(Teacher);
+exports.teacherAuthenticate = authenticate;
 exports.teacherUpdatePassword = updatePassword(Teacher);
 exports.teacherCheckLogin = checkLogin(Teacher);

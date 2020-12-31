@@ -9,11 +9,12 @@ const {
 } = require("./authControllers/auth");
 const sendMail = require("../helpers/sendMail");
 const { createOtp } = require("../helpers/createOtp");
+const { signToken } = require("../helpers/getJwtToken");
 
 exports.adminLogin = login(Admin);
 exports.adminForgotPassword = forgotPassword(Admin, "admins");
 exports.adminResetPassword = resetPassword(Admin);
-exports.adminAuthenticate = authenticate(Admin);
+exports.adminAuthenticate = authenticate;
 exports.adminUpdatePassword = updatePassword(Admin);
 exports.adminCheckLogin = checkLogin(Admin);
 exports.adminSignup = async (req, res, next) => {
@@ -65,7 +66,6 @@ exports.confirmSignup = async (req, res, next) => {
         },
       });
     }
-    console.log(user);
     user.isConfirmed = true;
     user.active = true;
     user.signupOtp = undefined;
@@ -73,6 +73,8 @@ exports.confirmSignup = async (req, res, next) => {
 
     await user.save({ validateBeforeSave: false });
     const token = signToken(user._id);
+
+    console.log(user);
 
     user.password = undefined;
     res.status(200).json({

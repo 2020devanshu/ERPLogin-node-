@@ -13,6 +13,6 @@ exports.createStudent = createUser(Student);
 exports.studentLogin = login(Student);
 exports.studentForgotPassword = forgotPassword(Student, "students");
 exports.studentResetPassword = resetPassword(Student);
-exports.studentAuthenticate = authenticate(Student);
+exports.studentAuthenticate = authenticate;
 exports.studentUpdatePassword = updatePassword(Student);
 exports.studentCheckLogin = checkLogin(Student);
