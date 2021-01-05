@@ -6,6 +6,10 @@ const subjectSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  subjectDescription: {
+    type: String,
+    trim: true,
+  },
 
   createdOn: Date,
 });

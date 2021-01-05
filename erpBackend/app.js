@@ -3,6 +3,8 @@ const passport = require("passport");
 const studentRouter = require("./routes/studentRoutes");
 const teacherRouter = require("./routes/teacherRoutes");
 const adminRouter = require("./routes/adminRoutes");
+const branchRouter = require("./routes/branchRoutes");
+const subjectRouter = require("./routes/subjectRoutes");
 const { signToken } = require("./helpers/getJwtToken");
 require("./helpers/passport/passport-google");
 const { adminCheckLogin } = require("./controllers/adminController");
@@ -34,4 +36,6 @@ app.get(
 app.use("/api/v1/students", studentRouter);
 app.use("/api/v1/teachers", teacherRouter);
 app.use("/api/v1/admins", adminRouter);
+app.use("/api/v1/subjects", subjectRouter);
+app.use("/api/v1/branches", branchRouter);
 module.exports = app;

@@ -26,8 +26,8 @@ const { createStudent } = require("../controllers/studentController");
 const { restrictTo } = require("../controllers/authControllers/auth");
 const router = express.Router();
 
-router.use(teacherAuthenticate);
 router.post("/login", teacherLogin);
+router.use(teacherAuthenticate);
 // router.post("/signup", authenticate(Admin), signup(Teacher));
 
 router.post(
