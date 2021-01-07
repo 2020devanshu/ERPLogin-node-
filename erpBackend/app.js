@@ -1,6 +1,7 @@
 const express = require("express");
 const passport = require("passport");
 const cors = require("cors");
+
 const studentRouter = require("./routes/studentRoutes");
 const teacherRouter = require("./routes/teacherRoutes");
 const adminRouter = require("./routes/adminRoutes");
@@ -19,7 +20,7 @@ const { signToken } = require("./helpers/getJwtToken");
 require("./helpers/passport/passport-google");
 const { adminCheckLogin } = require("./controllers/adminController");
 const app = express();
-
+//CORS
 app.use(cors());
 app.use(express.json());
 app.use(passport.initialize());
