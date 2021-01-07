@@ -3,12 +3,12 @@ const mongoose = require("mongoose");
 const hostelAttendanceSchema = new mongoose.Schema({
   hostelId: {
     type: mongoose.Schema.ObjectId,
-    ref: Hostel,
+    ref: "Hostel",
     required: [true, "Please specify the hostel id"],
   },
   studentId: {
     type: mongoose.Schema.ObjectId,
-    ref: Student,
+    ref: "Student",
     required: [true, "Please specify the Student id"],
   },
   attendanceMarkedOn: {
@@ -25,7 +25,7 @@ const hostelAttendanceSchema = new mongoose.Schema({
   },
   attendanceRecordedBy: {
     type: mongoose.Schema.ObjectId,
-    ref: Teacher,
+    ref: "Teacher",
   },
   createdOn: {
     type: Date,

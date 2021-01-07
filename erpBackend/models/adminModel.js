@@ -18,7 +18,7 @@ const adminSchema = new mongoose.Schema({
     type: String,
     trim: true,
     minlength: 10,
-    required: [true, "User must specify phone number"],
+    // required: [true, "User must specify phone number"],
   },
   role: {
     type: String,
