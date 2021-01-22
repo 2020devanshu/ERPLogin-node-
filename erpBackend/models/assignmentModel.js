@@ -6,6 +6,10 @@ const assignmentSchema = new mongoose.Schema({
     ref: "Subject",
     required: [true, "Please specify subject Id"],
   },
+  teacherId: {
+    type: mongoose.Schema.ObjectId,
+    ref: "Subject",
+  },
   attachments: {
     type: [String],
   },

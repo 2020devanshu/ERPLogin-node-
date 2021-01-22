@@ -34,6 +34,7 @@ const institutionAttendanceSchema = new mongoose.Schema({
     required: true,
   },
 });
+institutionAttendanceSchema.index({ lectureId: 1, studentId: -1 });
 
 const InstitutionAttendance = mongoose.model(
   "InstitutionAttendance",

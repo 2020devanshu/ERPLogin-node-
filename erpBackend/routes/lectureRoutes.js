@@ -12,6 +12,7 @@ const {
   createLecture,
   updateLecture,
   deleteLecture,
+  lectureBySubject,
 } = require("../controllers/lectureController");
 const router = express.Router();
 //For Lecture
@@ -29,6 +30,13 @@ router.get(
   studentCheckLogin,
   authenticate,
   getLecture
+);
+router.get(
+  "/by-subject/:id",
+  teacherCheckLogin,
+  studentCheckLogin,
+  authenticate,
+  lectureBySubject
 );
 router.post(
   "/",

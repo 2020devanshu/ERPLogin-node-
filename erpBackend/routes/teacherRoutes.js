@@ -1,7 +1,7 @@
 const express = require("express");
 
 const {
-  teacherAuthenticate,
+  teacherCheckLogin,
   teacherForgotPassword,
   teacherLogin,
   teacherResetPassword,
@@ -23,11 +23,14 @@ const {
   deleteSubject,
 } = require("../controllers/subjectController");
 const { createStudent } = require("../controllers/studentController");
-const { restrictTo } = require("../controllers/authControllers/auth");
+const {
+  restrictTo,
+  authenticate,
+} = require("../controllers/authControllers/auth");
 const router = express.Router();
 
 router.post("/login", teacherLogin);
-router.use(teacherAuthenticate);
+router.use(teacherCheckLogin, authenticate);
 // router.post("/signup", authenticate(Admin), signup(Teacher));
 
 router.post(

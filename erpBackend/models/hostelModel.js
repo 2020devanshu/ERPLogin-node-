@@ -1,33 +1,32 @@
-const mongoose = require("mongoose")
-
-
+const mongoose = require("mongoose");
 
 const hostelSchema = new mongoose.Schema({
-    name:{
-        type:String,
-        required:[true,"Please specify hostel name"]
-    },
-    year:{
-        type:String,
-        required:[true,"Please specify hostel year"]
-    },
-  wardenId:{
-      type:mongoose.Schema.ObjectId,
-      ref:"Teacher",
-      required:[true,"please specify warden id"]
+  name: {
+    type: String,
+    required: [true, "Please specify hostel name"],
   },
-  superVisorId:[{
-    type:mongoose.Schema.ObjectId,
-    ref:"Teacher",
-    required:[true,"please specify supervisor id"]
-}],
-    createdOn:{
-        type:Date,
-        required:true
-    }
+  year: {
+    type: String,
+    required: [true, "Please specify hostel year"],
+  },
+  wardenId: {
+    type: mongoose.Schema.ObjectId,
+    ref: "Teacher",
+    required: [true, "please specify warden id"],
+  },
+  supervisorId: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: "Teacher",
+      required: [true, "please specify supervisor id"],
+    },
+  ],
+  createdOn: {
+    type: Date,
+    required: true,
+  },
+});
 
-})
+const Hostel = mongoose.model("Hostel", hostelSchema);
 
-const Hostel = mongoose.model("Hostel",hostelSchema)
-
-module.exports = Hostel
+module.exports = Hostel;

@@ -7,36 +7,42 @@ const {
 } = require("../controllers/authControllers/auth");
 const { studentCheckLogin } = require("../controllers/studentController");
 const {
-  getAllHostelAttendance,
-  getHostelAttendance,
-  createHostelAttendance,
-  updateHostelAttendance,
-  deleteHostelAttendance,
-} = require("../controllers/hostelAttendanceController");
+  getAllInstitutionAttendance,
+  getInstitutionAttendance,
+  createInstitutionAttendance,
+  updateInstitutionAttendance,
+  deleteInstitutionAttendance,
+  // getAttendanceByLectureByStudent,
+} = require("../controllers/institutionAttendanceController");
 const router = express.Router();
-//For HostelAttendance
+//For InstitutionAttendance
 
 router.get(
   "/",
   teacherCheckLogin,
   authenticate,
   restrictTo("sub-admin"),
-  getAllHostelAttendance
+  getAllInstitutionAttendance
 );
 router.get(
   "/:id",
   teacherCheckLogin,
   studentCheckLogin,
   authenticate,
-  getHostelAttendance
+  getInstitutionAttendance
 );
-router.post("/", teacherCheckLogin, authenticate, createHostelAttendance);
-router.patch("/:id", teacherCheckLogin, authenticate, updateHostelAttendance);
+router.post("/", teacherCheckLogin, authenticate, createInstitutionAttendance);
+router.patch(
+  "/:id",
+  teacherCheckLogin,
+  authenticate,
+  updateInstitutionAttendance
+);
 router.delete(
   "/:id",
   teacherCheckLogin,
   authenticate,
   restrictTo("sub-admin"),
-  deleteHostelAttendance
+  deleteInstitutionAttendance
 );
 module.exports = router;

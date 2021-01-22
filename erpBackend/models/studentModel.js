@@ -22,6 +22,11 @@ const studentSchema = new mongoose.Schema({
     ref: "Branch",
     required: [true, "Must specify Branch"],
   },
+  hostel: {
+    type: mongoose.Schema.ObjectId,
+    ref: "Hostel",
+    required: [true, "Must specify Hostel"],
+  },
   section: {
     type: mongoose.Schema.ObjectId,
     ref: "Section",
