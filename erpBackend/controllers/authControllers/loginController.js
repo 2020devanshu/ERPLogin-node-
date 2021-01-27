@@ -12,7 +12,10 @@ exports.login = (Model) => {
         });
       }
       //2. User exists and if password is correct
-      const user = await Model.findOne({ username }).select("+password");
+      let user = await Model.findOne({ username }).select("+password");
+      if (!user) {
+        user = await Model.findOne({ email: username }).select("+password");
+      }
 
       if (!user || !(await user.correctPassword(password, user.password))) {
         return res.status(401).json({
